@@ -27,16 +27,12 @@ api.on('data', data => {
  data.time = data.dateutc;
  data.pullTime = new Date(data.dateutc);
  (async function() {
-   console.log("Im am here");
-   console.log(data);
    let client = await MongoClient.connect(connectionString,
      {  });
    let db = client.db('sensorData');
    try {
      if(data.length && data.length > 0) {
        for(let i = 0; i < data.length; i++) {
-         console.log("===== "+ data[i].mac);
-         console.log(data[i]);
          let collection = db.collection("ambientWeatherWS");
          await collection.insertOne(data[i]);
        }
