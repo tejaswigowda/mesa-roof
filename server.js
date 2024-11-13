@@ -46,7 +46,7 @@ app.get("/getLatest", function (req, res) {
       { useNewUrlParser: true });
     let db = client.db('sensorData');
     try {
-      let result = await db.collection("ambientWeatherWS").find({macAddress:mac}).limit(10).toArray();
+      let result = await db.collection("ambientWeatherWS").find({mac:mac}).limit(10).toArray();
       res.send(JSON.stringify(result));
     }
     finally {
