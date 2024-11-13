@@ -37,12 +37,12 @@ api.on('data', data => {
        for(let i = 0; i < data.length; i++) {
          console.log("===== "+ data[i].mac);
          console.log(data[i]);
-         let collection = db.collection("ambientWeather");
+         let collection = db.collection("ambientWeatherWS");
          await collection.insertOne(data[i]);
        }
      }
      else {
-       let collection = db.collection("ambientWeather");
+       let collection = db.collection("ambientWeatherWS");
        await collection.insertOne(data);
      }
    }
